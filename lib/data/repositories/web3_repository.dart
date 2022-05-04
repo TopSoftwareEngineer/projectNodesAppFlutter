@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 import 'dart:math';
 
 import 'package:http/http.dart' as http;
+=======
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
 import 'package:projectx/config/strings.dart';
 import 'package:projectx/data/models/node.dart';
 import 'package:projectx/data/models/response.dart';
@@ -13,6 +16,7 @@ import 'package:web3dart/web3dart.dart';
 
 class Web3Repository {
   static const String url = "https://api.avax-test.network/ext/bc/C/rpc";
+<<<<<<< HEAD
   static const String tokenContractDataFeeds = "0x183433E3B157c2f4B7ae8B56524A3f31FD18918c";
   static const String routerContractDataFeeds = "0x2D99ABD9008Dc933ff5c0CD271B88309593aB921";
   static const String nodeRewardsContractDataFeeds = "0x0fE753E28292f04975f73CE7F92206B045EEC812";
@@ -20,6 +24,18 @@ class Web3Repository {
   // mainnet
   // static const String AVAX_USD_DataFeeds = "0x0A77230d17318075983913bC2145DB16C7366156";
   static const String AVAX_USD_DataFeeds = "0x5498BB86BC934c8D34FDA08E81D444153d0D06aD";
+=======
+  static const String tokenContractDataFeeds =
+      "0x183433E3B157c2f4B7ae8B56524A3f31FD18918c";
+  static const String routerContractDataFeeds =
+      "0x2D99ABD9008Dc933ff5c0CD271B88309593aB921";
+  static const String nodeRewardsContractDataFeeds =
+      "0x0fE753E28292f04975f73CE7F92206B045EEC812";
+  //mainnet
+  //static const String AVAX_USD_DataFeeds = "0x0A77230d17318075983913bC2145DB16C7366156";
+  static const String AVAX_USD_DataFeeds =
+      "0x5498BB86BC934c8D34FDA08E81D444153d0D06aD";
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   static const List<String> namesNodes = [
     'Footprint',
     'Saturn',
@@ -122,6 +138,7 @@ class Web3Repository {
     'Fleming',
     'Witch Head',
   ];
+<<<<<<< HEAD
   final nodeRewardsDataFeeds = NodeRewardsDataFeeds(url, nodeRewardsContractDataFeeds);
   final tokenDataFeeds = TokenDataFeeds(url, tokenContractDataFeeds);
 
@@ -132,6 +149,12 @@ class Web3Repository {
     return balance.getValueInUnit(EtherUnit.ether);
   }
 
+=======
+  final nodeRewardsDataFeeds =
+      NodeRewardsDataFeeds(url, nodeRewardsContractDataFeeds);
+  final tokenDataFeeds = TokenDataFeeds(url, tokenContractDataFeeds);
+
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   Future<BigInt> getLatestRoundData() async {
     try {
       final chainLinkDataFeeds = ChainLinkDataFeeds(url, AVAX_USD_DataFeeds);
@@ -142,7 +165,12 @@ class Web3Repository {
     }
   }
 
+<<<<<<< HEAD
   EthPrivateKey getCredentialsByPrivateKey({required String privateKey}) {
+=======
+  Future<EthPrivateKey> getCredentialsByPrivateKey(
+      {required String privateKey}) async {
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
     final credentials = EthPrivateKey.fromHex(privateKey);
     return credentials;
   }
@@ -160,10 +188,20 @@ class Web3Repository {
       final tokenDataFeeds = TokenDataFeeds(url, tokenContractDataFeeds);
       final ethereumAddress = EthereumAddress.fromHex(publickey);
       final tokenBalance = await tokenDataFeeds.balanceOf(publickey);
+<<<<<<< HEAD
       final allowance = await tokenDataFeeds.allowance(ethereumAddress, tokenDataFeeds.dataFeedsContractAddress);
       var approve = 'false';
       if (allowance == BigInt.from(0)) {
         approve = await tokenDataFeeds.approve(tokenDataFeeds.dataFeedsContractAddress, BigInt.from(1000000000000000000));
+=======
+      final allowance = await tokenDataFeeds.allowance(
+          ethereumAddress, tokenDataFeeds.dataFeedsContractAddress);
+      var approve = 'false';
+      if (allowance == BigInt.from(0)) {
+        approve = await tokenDataFeeds.approve(
+            tokenDataFeeds.dataFeedsContractAddress,
+            BigInt.from(1000000000000000000));
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
       } else if (allowance > BigInt.from(0)) {
         approve = 'true';
       }
@@ -209,6 +247,7 @@ class Web3Repository {
   }
 
   Future<BigInt> getTokenPriceInAvax() async {
+<<<<<<< HEAD
     final path = await getPathTokenForAvax(tokenAddress: tokenContractDataFeeds);
     final routerDataFeeds = RouterDataFeeds(url, routerContractDataFeeds);
     final result = await routerDataFeeds.getAmountsOut(BigInt.from(1000000000000000000), path);
@@ -223,11 +262,40 @@ class Web3Repository {
     final path = await getPathAvaxForTokens(tokenAddress: "0xFe143522938e253e5Feef14DB0732e9d96221D72");
     final routerDataFeeds = RouterDataFeeds(url, routerContractDataFeeds);
     final result = await routerDataFeeds.getAmountsOut(BigInt.from(1000000000000000000), path);
+=======
+    final path =
+        await getPathTokenForAvax(tokenAddress: tokenContractDataFeeds);
+    final routerDataFeeds = RouterDataFeeds(url, routerContractDataFeeds);
+    final result = await routerDataFeeds.getAmountsOut(
+        BigInt.from(1000000000000000000), path);
+    return result[1];
+  }
+
+  Future<List<EthereumAddress>> getPathTokenForAvax(
+      {required String tokenAddress}) async {
+    return [
+      EthereumAddress.fromHex(tokenAddress),
+      EthereumAddress.fromHex("0xd00ae08403B9bbb9124bB305C09058E32C39A48c")
+    ];
+  }
+
+  Future<BigInt> getAVAXPriceInUSDC() async {
+    final path = await getPathAvaxForTokens(
+        tokenAddress: "0xFe143522938e253e5Feef14DB0732e9d96221D72");
+    final routerDataFeeds = RouterDataFeeds(url, routerContractDataFeeds);
+    final result = await routerDataFeeds.getAmountsOut(
+        BigInt.from(1000000000000000000), path);
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
     return result[1];
   }
 
   Future<String> getNodesLastClaimTime(walletAddress) async {
+<<<<<<< HEAD
     final result = await nodeRewardsDataFeeds.getNodesLastClaimTime(walletAddress);
+=======
+    final result =
+        await nodeRewardsDataFeeds.getNodesLastClaimTime(walletAddress);
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
     return result;
   }
 
@@ -236,11 +304,24 @@ class Web3Repository {
     return result;
   }
 
+<<<<<<< HEAD
   Future<List<EthereumAddress>> getPathAvaxForTokens({required String tokenAddress}) async {
     return [EthereumAddress.fromHex("0xd00ae08403B9bbb9124bB305C09058E32C39A48c"), EthereumAddress.fromHex(tokenAddress)];
   }
 
   Future<bool> isNodeOwner(String publicKey) => nodeRewardsDataFeeds.isNodeOwner(publicKey);
+=======
+  Future<List<EthereumAddress>> getPathAvaxForTokens(
+      {required String tokenAddress}) async {
+    return [
+      EthereumAddress.fromHex("0xd00ae08403B9bbb9124bB305C09058E32C39A48c"),
+      EthereumAddress.fromHex(tokenAddress)
+    ];
+  }
+
+  Future<bool> isNodeOwner(String publicKey) =>
+      nodeRewardsDataFeeds.isNodeOwner(publicKey);
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
 
   Future<Response> cashoutAll({
     required String publicKey,
@@ -248,7 +329,12 @@ class Web3Repository {
     try {
       final isNodeOwner = await nodeRewardsDataFeeds.isNodeOwner(publicKey);
       if (isNodeOwner) {
+<<<<<<< HEAD
         final rewardsAmountOf = await nodeRewardsDataFeeds.getRewardAmountOf(publicKey);
+=======
+        final rewardsAmountOf =
+            await nodeRewardsDataFeeds.getRewardAmountOf(publicKey);
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
         if (rewardsAmountOf > BigInt.from(0)) {
           final cashoutAll = await tokenDataFeeds.cashoutAll();
           print("result_tx");
@@ -287,8 +373,15 @@ class Web3Repository {
     required List<Node> listNode,
   }) async {
     List<Node> listNodes = [];
+<<<<<<< HEAD
     final nodeRewardsDataFeeds = NodeRewardsDataFeeds(url, nodeRewardsContractDataFeeds);
     final result = await nodeRewardsDataFeeds.getNodesRewardAvailable(publicKey);
+=======
+    final nodeRewardsDataFeeds =
+        NodeRewardsDataFeeds(url, nodeRewardsContractDataFeeds);
+    final result =
+        await nodeRewardsDataFeeds.getNodesRewardAvailable(publicKey);
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
     final listRewards = result.split('#');
     int cont = 0;
     for (var element in listRewards) {
@@ -297,11 +390,23 @@ class Web3Repository {
         createdAt: cont < listNode.length ? listNode[cont].createdAt : '',
         updatedAt: cont < listNode.length ? listNode[cont].updatedAt : '',
         deletedAt: cont < listNode.length ? listNode[cont].deletedAt : '',
+<<<<<<< HEAD
         walletAddress: cont < listNode.length ? listNode[cont].walletAddress : publicKey,
         dateCreated: cont < listNode.length ? listNode[cont].dateCreated : 0,
         rpcUrl: cont < listNode.length ? listNode[cont].rpcUrl : PxStrings.rpcIsEmpty,
         wssUrl: cont < listNode.length ? listNode[cont].wssUrl : '',
         maintenancefeeLastpaid: cont < listNode.length ? listNode[cont].maintenancefeeLastpaid : 0,
+=======
+        walletAddress:
+            cont < listNode.length ? listNode[cont].walletAddress : publicKey,
+        dateCreated: cont < listNode.length ? listNode[cont].dateCreated : 0,
+        rpcUrl: cont < listNode.length
+            ? listNode[cont].rpcUrl
+            : PxStrings.rpcIsEmpty,
+        wssUrl: cont < listNode.length ? listNode[cont].wssUrl : '',
+        maintenancefeeLastpaid:
+            cont < listNode.length ? listNode[cont].maintenancefeeLastpaid : 0,
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
         network: cont < listNode.length ? listNode[cont].network : '',
         location: cont < listNode.length ? listNode[cont].location : '',
         name: namesNodes[cont],

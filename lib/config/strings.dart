@@ -5,7 +5,11 @@ class PxStrings {
 
   // Token Amount
   static const String ordenlimite = 'Pon una orden límite en ';
+<<<<<<< HEAD
   static const String avax = 'AVAX';
+=======
+  static const String avax = ' AVAX';
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   static const String pxt2 = 'PXT2';
   static const String max = 'MAX';
   static const String desde = 'Input';
@@ -33,9 +37,12 @@ class PxStrings {
   static const String myNodes = 'My Nodes';
   static const String universalNodes = 'Universal nodes initialized';
   static const String create = 'Create';
+<<<<<<< HEAD
 
   static const String buyWithCreditCardLabel = 'Buy With Credit Card';
 
+=======
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   static const String usdt = 'USDT';
   static const String nodesActivated = 'nodes activated';
   static const String seeAll = 'See All';

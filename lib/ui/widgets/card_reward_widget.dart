@@ -9,6 +9,10 @@ import 'package:web3dart/web3dart.dart';
 class CardReward extends StatelessWidget {
   final BigInt valueClaim;
   final String initials;
+<<<<<<< HEAD
+=======
+  final HomeCubit cubit;
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   final VoidCallback onClaimPressed;
   final bool disableButtonClaim;
 
@@ -16,6 +20,10 @@ class CardReward extends StatelessWidget {
     Key? key,
     required this.valueClaim,
     required this.initials,
+<<<<<<< HEAD
+=======
+    required this.cubit,
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
     required this.onClaimPressed,
     required this.disableButtonClaim,
 

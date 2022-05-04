@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+<<<<<<< HEAD
 import 'package:projectx/bloc/app_bloc.dart';
 import 'package:projectx/bloc/bloc.dart';
+=======
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
 import 'package:projectx/config/assets.dart';
 import 'package:projectx/config/colors.dart';
 import 'package:projectx/config/router/router_path.dart';
@@ -31,8 +34,12 @@ class HomeScreen extends StatelessWidget {
     bool disableButtonClaim = false;
     List<Node> listNode3 = [];
     String titleAppbar = '';
+<<<<<<< HEAD
     //String balance = '';
     BigInt balance = BigInt.zero;
+=======
+    String balance = '';
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
     BigInt claimValue = BigInt.zero;
     String cantNodes = '';
     List<Node> listNode = [];
@@ -51,7 +58,12 @@ class HomeScreen extends StatelessWidget {
               listNode3.add(element);
             }
           }
+<<<<<<< HEAD
           balance = (EtherAmount.inWei(state.balanceOf.getInEther).getInEther);
+=======
+          balance = (EtherAmount.inWei(state.balanceOf.getInEther).getInEther)
+              .toString();
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
           //balance = state.balanceOf.getInEther.toString();
           claimValue = EtherAmount.inWei(state.rewardAmountOf).getInEther;
           titleAppbar = state.publicKey;
@@ -114,7 +126,13 @@ class HomeScreen extends StatelessWidget {
                   centerTitle: true,
                   leading: IconButton(
                     onPressed: () async {
+<<<<<<< HEAD
                       AppBloc.accountBloc.add(AccountLogoutEvent());
+=======
+                      await SharedPreferencesUtil.removeAllItem();
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          PxPathCfg.initialScreenPageRoute, (route) => false);
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
                     },
                     icon: const Icon(Icons.arrow_back_ios),
                   ),
@@ -127,7 +145,11 @@ class HomeScreen extends StatelessWidget {
                             : '${titleAppbar.substring(0, 5)}...${titleAppbar.substring(titleAppbar.length - 4, titleAppbar.length)}',
                       ),
                       Text(
+<<<<<<< HEAD
                         balance.toString().isEmpty ? '' : 'Balance: $balance PXT',
+=======
+                        balance.isEmpty ? '' : 'Balance: $balance PXT',
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
                         style: const TextStyle(fontSize: 13),
                       ),
                     ],
@@ -185,7 +207,12 @@ class HomeScreen extends StatelessWidget {
                       context: context,
                       cubit: _cubit,
                       onButtonPressed: () =>
+<<<<<<< HEAD
                           showCreatesNodesAmountDialog(context, _cubit, balance)),
+=======
+                          showCreatesNodesAmountDialog(context, _cubit),
+                    ),
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
                   ],
                 ),
                 spaceBetween,
@@ -254,6 +281,10 @@ class HomeScreen extends StatelessWidget {
                         CardReward(
                           initials: 'PXT2',
                           valueClaim: claimValue,
+<<<<<<< HEAD
+=======
+                          cubit: _cubit,
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
                           disableButtonClaim: disableButtonClaim,
                           onClaimPressed: () =>
                               showClaimDialog(context, claimValue, _cubit),
@@ -290,7 +321,11 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+<<<<<<< HEAD
   void showCreatesNodesAmountDialog(BuildContext context, HomeCubit cubit, BigInt balanceOf) {
+=======
+  void showCreatesNodesAmountDialog(BuildContext context, HomeCubit cubit) {
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
     showDialog(
       context: context,
       builder: (context) {
@@ -368,7 +403,24 @@ class HomeScreen extends StatelessWidget {
             actions: <Widget>[
               TextButton(
                 style: buttonStyleActivate,
+<<<<<<< HEAD
                 onPressed: balanceOf < BigInt.from(1) ? null : () => _showCreateNodeDialog(context, cubit, amount),
+=======
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  DialogsUtil().waitingStatus(
+                      cubit: cubit,
+                      action: 1,
+                      amount: BigInt.from(amount),
+                      context: context);
+                  /*waitingStatus(
+                context: context,
+                action: action,
+                cubit: cubit,
+                amount: BigInt.from(amount),
+              );*/
+                },
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
                 child: const Text(
                   PxStrings.createNode,
                 ),
@@ -386,6 +438,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+<<<<<<< HEAD
   void _showCreateNodeDialog(BuildContext context, HomeCubit cubit, int amount) {
 {
                   Navigator.of(context).pop();
@@ -403,6 +456,8 @@ class HomeScreen extends StatelessWidget {
                 }
   }
 
+=======
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   void showClaimDialog(BuildContext context, BigInt amount, HomeCubit cubit) {
     showDialog(
       context: context,

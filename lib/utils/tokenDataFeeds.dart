@@ -18,10 +18,13 @@ class TokenDataFeeds {
         Token(client: web3HttpClient, address: dataFeedsContractAddress);
   }
 
+<<<<<<< HEAD
   Future<BigInt> decimals() async {
     return await tokenInstance.decimals();
   }
 
+=======
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   Future<BigInt> allowance(
       EthereumAddress owner, EthereumAddress spender) async {
     return await tokenInstance.allowance(owner, spender);

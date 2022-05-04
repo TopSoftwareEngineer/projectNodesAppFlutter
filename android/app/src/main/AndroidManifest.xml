@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.projectx"
     android:versionCode="1"
@@ -7,6 +8,12 @@
         android:label="projectx"
         android:name="${applicationName}"
         tools:replace="android:label"
+=======
+    package="com.example.projectx">
+   <application
+        android:label="projectx"
+        android:name="${applicationName}"
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

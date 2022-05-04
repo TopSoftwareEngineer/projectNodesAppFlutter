@@ -183,6 +183,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.1"
+<<<<<<< HEAD
   dio:
     dependency: "direct main"
     description:
@@ -190,6 +191,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.6"
+=======
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   fake_async:
     dependency: transitive
     description:
@@ -534,6 +537,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+<<<<<<< HEAD
   ramp_flutter:
     dependency: "direct main"
     description:
@@ -541,6 +545,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+=======
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
   shared_preferences:
     dependency: "direct main"
     description:

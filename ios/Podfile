@@ -1,10 +1,13 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '9.0'
 
+<<<<<<< HEAD
 source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/passbase/cocoapods-specs.git'
 source 'https://github.com/passbase/microblink-cocoapods-specs.git'
 
+=======
+>>>>>>> beb34eb28dea0270a3f133004d37114ce9cd13f3
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
